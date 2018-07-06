@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boardwalk Demo", "Boardwalk Demo\Boardwalk Demo.csproj", "{140548DE-29D1-4E7E-8AAB-3BCAEAAD850A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boardwalk Demo.Tests", "Boardwalk Demo.Tests\Boardwalk Demo.Tests.csproj", "{447F552B-254E-4025-8539-813791905FC0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{140548DE-29D1-4E7E-8AAB-3BCAEAAD850A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{140548DE-29D1-4E7E-8AAB-3BCAEAAD850A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{140548DE-29D1-4E7E-8AAB-3BCAEAAD850A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{140548DE-29D1-4E7E-8AAB-3BCAEAAD850A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{447F552B-254E-4025-8539-813791905FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{447F552B-254E-4025-8539-813791905FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{447F552B-254E-4025-8539-813791905FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{447F552B-254E-4025-8539-813791905FC0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE8E25EC-8E20-496A-B339-D5A302D17D02}
+	EndGlobalSection
+EndGlobal
