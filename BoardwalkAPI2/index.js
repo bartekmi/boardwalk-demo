@@ -9,6 +9,7 @@ a2zApp.controller("MainController", function($scope, $location, $rootScope, Shop
 
   $scope.search = function() {
     console.log("Search clicked");
+    window.location = "#/home";
     $scope.$broadcast('userSearched', $scope.searchText);
   };
 
