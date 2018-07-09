@@ -20,15 +20,31 @@ a2zApp.controller('QueryController', function($rootScope, $scope, $http, Shoppin
   // If searchText is blank, the API returns a list of Featured Products.
   function queryProducts(searchText) {
     console.log("Executing Search with text: " + searchText);
-    $scope.isShowingFeaturedProducts = (searchText == null || !(/\S/.test(searchText)));
+    $scope.heading = "Searching...";
 
     // TODO: make data url-friendly?
     var url = '/api/ProductQuery/' + searchText;
 
     $http.get(url)
       .then(function(okResponse) {
+
       $scope.products = okResponse.data;
-      window.location = "#/home";
+
+      // These determine what message to show at top of page
+      var isTextEmpty = (searchText == null || !(/\S/.test(searchText)));
+      var noResults = okResponse.data.length == 0;
+
+      if (isTextEmpty) {
+        if (noResults)
+          $scope.heading = "No Featured Products Today";
+        else
+          $scope.heading = "Featured Products";
+      }else {
+        if (noResults)
+          $scope.heading = "No Results For Your Search";
+        else
+          $scope.heading = "Search Results";
+      }
     }, function(errorResponse) {
       console.log("Error in " + url);
       console.log(errorResponse);
