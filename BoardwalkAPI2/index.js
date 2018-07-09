@@ -6,7 +6,7 @@ a2zApp.controller("MainController", function($scope, $location, $rootScope, Shop
 
   $scope.searchText = '';
   $rootScope.searchText = '';
-  
+
   $scope.cart = ShoppingCartService;
 
   $scope.search = function() {
@@ -16,7 +16,7 @@ a2zApp.controller("MainController", function($scope, $location, $rootScope, Shop
     // ... Neither way works in both cases
     $rootScope.searchText = $scope.searchText;
     $scope.$broadcast('userSearched', $scope.searchText);
-    
+
     window.location = "#/home";
   };
 
@@ -24,9 +24,6 @@ a2zApp.controller("MainController", function($scope, $location, $rootScope, Shop
     console.log("Go to Shopping Cart.");
     window.location = "#/shopping-cart";
   }
-  
-  // Show the features products on page load
-  //$scope.search("");    
 });
 
 // Set up the routes/navigation
@@ -57,3 +54,4 @@ a2zApp.config(function($routeProvider, $locationProvider) {
 
     .otherwise({redirectTo: '/home'});
 });
+

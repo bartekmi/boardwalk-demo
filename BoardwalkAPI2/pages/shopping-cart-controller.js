@@ -20,3 +20,10 @@ a2zApp.controller('ShoppingCartController', function($rootScope, $scope, Shoppin
     return ShoppingCartService.isEmpty();
   }
 });
+
+// Do not allow user to enter negative numbers
+// Wanted to do this via ng-keydown and $scope, but e.preventDefault() had no effect
+function quantityInputKeyDown(e) {
+  if (event.key == "-")
+    e.preventDefault();
+}

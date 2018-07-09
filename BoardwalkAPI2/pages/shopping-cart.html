@@ -4,7 +4,7 @@
 <div ng-repeat="i in cart.items" style="margin: 15px">
 
   <div class="left" style="height: 180px">
-    <img src="{{i.product.image}}" alt="{{i.product.description}}" style="width: 180px; height: 180px"/>
+    <img src="{{i.product.image}}" alt="{{i.product.description}}" style="height: 180px"/>
   </div>
 
   <div class="right" style="height: 180px">
@@ -26,7 +26,7 @@
 
     <div>
       <span>Quantity:</span>
-      <input type="number" min="1" ng-model="i.quantity"/>
+      <input type="number" min="1" ng-model="i.quantity" onkeydown="quantityInputKeyDown(event)"/>
       <span>Total:</span>
       <span>{{utils.toMoney(i.total())}}</span>
     </div>
