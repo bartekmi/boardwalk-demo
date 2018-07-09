@@ -10,18 +10,47 @@ code {
 * {
   box-sizing: border-box;
 }
-.left {
+
+.image, .description {
+  height: 180px;
+}
+
+.image {
   float: left;
   width: auto;
 }
-.right {
+.description {
   float: none;
   width: 100%;
 }
 
+.main-content {
+  float: left;
+  width: 70%;
+}
+.right-sidebar {
+  float: left;
+  width: 30%;
+}
+
+
+/* Tablet */
+@media only screen and (max-width:800px) {
+  .main-content, .right-sidebar {
+    width: 100%;
+    float: none;
+  }
+}
+
+/* Phone */
 @media only screen and (max-width:500px) {
-  .left, .right {
+  .image {
     float: none;
     width: 100%;
+  }
+  .description {
+    float: none;
+    width: 100%;
+    height: auto;
   }
 }

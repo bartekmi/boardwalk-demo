@@ -1,5 +1,8 @@
-WISHLIST:
-* Add more complete unit testing
+TODO:
+* Move order summary to the side, or to the top (or bottom) on phone screen sizes
+* CSV styling (Need Eliana's help)
+* Add favicon
+* Good and proper text search in the database
 * Good and proper error handling (e.g. API cannot be reached, etc)
 
 NOTES:
@@ -11,7 +14,6 @@ NOTES:
 6. "A user's cart must show them the total of their items" - A number of interpretations are possible: I chose this to mean the number of physical items in the cart, taking quantity into consideration.
 
 BUGS - OUTSTANDING:
-3. Image aspect ratio is screwed up
 4. Revisit this bug - see if either way can be removed now that we fixed redundant navigation to /home
 
 
@@ -19,6 +21,7 @@ BUGS - SOLVED
 1. Cart total not updated on quantity update. Consider removing binding and add button. Why did angular update some but not all required fields???
 2. Entering zero or negative for quantity gives NaN as total
 https://stackoverflow.com/questions/7372067/is-there-any-way-to-prevent-input-type-number-getting-negative-values
+3. Image aspect ratio is screwed up
 4. Navigate to non-search page (e.g. 'contact us'), enter a search term, and click search => you get featured products. Reason: the constructor function gets called every time a screen is entered. Possible solution is to use $rootScope to keep track of current search term.
 
 - Must load on first-time use

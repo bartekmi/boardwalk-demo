@@ -22,7 +22,6 @@ a2zApp.controller('QueryController', function($rootScope, $scope, $http, Shoppin
     console.log("Executing Search with text: " + searchText);
     $scope.heading = "Searching...";
 
-    // TODO: make data url-friendly?
     var url = '/api/ProductQuery/' + searchText;
 
     $http.get(url)

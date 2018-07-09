@@ -1,14 +1,13 @@
-<!-- TODO: Make this dynamic if showing featured products -->
 <div class="page-heading">{{heading}}</div>
 
 <!-- Iterate over all products in search results -->
 <div ng-repeat="p in products" style="margin: 15px">
 
-  <div class="left" style="height: 180px">
+  <div class="image">
     <img src="{{p.image}}" alt="{{p.description}}" style="height: 180px"/>
   </div>
 
-  <div class="right" style="height: 180px">
+  <div class="description">
     <table>
       <tr>
         <td>Description:</td>
