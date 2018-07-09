@@ -1,0 +1,7 @@
+﻿CREATE TABLE IF NOT EXISTS product (
+    id serial primary key,
+    code text unique not null,
+    price double precision not null,
+    description text,
+	image text
+);

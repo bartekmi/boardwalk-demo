@@ -20,7 +20,7 @@ a2zApp.controller('QueryController', function($scope, $http, ShoppingCartService
     
     // TODO: user relative URL
     // TODO: make data url-friendly?
-    var url = 'http://localhost:55345/api/ProductQuery/' + data;
+    var url = '/api/ProductQuery/' + data;
     
     $http.get(url)
     .then(function(okResponse) {

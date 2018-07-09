@@ -22,8 +22,8 @@ namespace importer {
                     List<Product> products = ReadCsv(csvPath);
                     allProducts.AddRange(products);
 
-                    foreach (Product product in products)
-                        Console.WriteLine(product);
+                    //foreach (Product product in products)
+                    //    Console.WriteLine(product);
                 }
             }
 
@@ -112,15 +112,18 @@ namespace importer {
         #region Store to Database
 
         private static void StroreInDatabase(List<Product> allProducts) {
-            // TODO
+            using (BoardwalkContext context = new BoardwalkContext()) {
+                context.Products.AddRange(allProducts);
+                context.SaveChanges();
+            }
         }
         #endregion
 
         #region Utilities
 
         private static void Warn(string filename, int ii, string warning) {
-            int csvRow = ii + 1;
-            Console.WriteLine("WARNING at {0}:{1} - {2}", filename, csvRow, warning);
+            //int csvRow = ii + 1;
+            //Console.WriteLine("WARNING at {0}:{1} - {2}", filename, csvRow, warning);
         }
         #endregion
     }
