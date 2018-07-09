@@ -15,7 +15,11 @@ a2zApp.controller('QueryController', function($rootScope, $scope, $http, Shoppin
     return ShoppingCartService.isInCart(product);
   }
 
+  // See detailed explanation in index.js for why it is necessary to call this
+  // both as a result of the 'userSearched' event and the controller constructor
+  // If searchText is blank, the API returns a list of Featured Products.
   function queryProducts(searchText) {
+    console.log("Executing Search with text: " + searchText);
     $scope.isShowingFeaturedProducts = (searchText == null || !(/\S/.test(searchText)));
 
     // TODO: make data url-friendly?
@@ -31,6 +35,5 @@ a2zApp.controller('QueryController', function($rootScope, $scope, $http, Shoppin
     });
   }
 
-  // Show the features products on page load
-  queryProducts("");    
+  queryProducts($rootScope.searchText);
 });

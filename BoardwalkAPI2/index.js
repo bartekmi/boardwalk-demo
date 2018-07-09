@@ -5,18 +5,28 @@
 a2zApp.controller("MainController", function($scope, $location, $rootScope, ShoppingCartService) {
 
   $scope.searchText = '';
+  $rootScope.searchText = '';
+  
   $scope.cart = ShoppingCartService;
 
   $scope.search = function() {
-    console.log("Search clicked");
-    window.location = "#/home";
+    // Need two ways of communicating with query-results-controller:
+    // 1. The $rootScope way for when we also do navigation from another page (e.g. 'Contact Us')
+    // 2. The $broadcast way if we are NOT navigating. 
+    // ... Neither way works in both cases
+    $rootScope.searchText = $scope.searchText;
     $scope.$broadcast('userSearched', $scope.searchText);
+    
+    window.location = "#/home";
   };
 
   $scope.goToShoppingCart = function() {
     console.log("Go to Shopping Cart.");
     window.location = "#/shopping-cart";
   }
+  
+  // Show the features products on page load
+  //$scope.search("");    
 });
 
 // Set up the routes/navigation
