@@ -11,7 +11,7 @@ namespace importer {
     class Program {
 
         private static int _nextId = 1;
-        private const string CSV_DIR = @"C:\Boardwalk\Shopify-Product-CSVs-and-Images\CSVs";
+        private const string CSV_DIR = @"..\..\..\CSVs";
 
         static void Main(string[] args) {
             List<Product> allProducts = new List<Product>();
@@ -112,7 +112,7 @@ namespace importer {
         #region Store to Database
 
         private static void StroreInDatabase(List<Product> allProducts) {
-            throw new NotImplementedException();
+            // TODO
         }
         #endregion
 

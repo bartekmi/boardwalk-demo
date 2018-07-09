@@ -1,0 +1,67 @@
+<h2>Shopping Cart: {{cart.numberOfItemsInCart()}} {{cart.numberOfItemsInCart() == 1 ? 'Item' : 'Items'}}</h2>
+
+<!-- Iterate over all items in the shoping cart -->
+<div ng-repeat="i in cart.items" style="margin: 15px">
+
+  <div class="left" style="height: 180px">
+    <img src="{{i.product.image}}" alt="{{i.product.description}}" style="width: 180px; height: 180px"/>
+  </div>
+
+  <div class="right" style="height: 180px">
+
+    <table>
+      <tr>
+        <td>Description:</td>
+        <td>{{i.product.description}}</td>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td>{{utils.toMoney(i.product.price)}}</td>
+      </tr>
+      <tr>
+        <td>SKU:</td>
+        <td>{{i.product.code}}</td>
+      </tr>
+    </table>
+
+    <div>
+      <span>Quantity:</span>
+      <input type="number" min="1" ng-model="i.quantity"/>
+      <span>Total:</span>
+      <span>{{utils.toMoney(i.total())}}</span>
+    </div>
+    
+    <div>
+        <button ng-click="removeFromCart(i)">REMOVE FROM CART</button>
+    </div>
+  </div>
+</div>
+
+<!-- Order Summary Box -->
+// TODO: Move this to the side, or to the top (or bottom) on phone screen sizes
+<div ng-hide="isCartEmpty()">
+  <i class="fa fa-shopping-cart" style="font-size:18px;"></i>
+  <span>Order Summary</span>
+
+  <table>
+    <tr>
+      <td>Subtotal:</td>
+      <td>{{utils.toMoney(cart.subtotal())}}</td>
+    </tr>
+    <tr>
+      <td>Shipping:</td>
+      <td>{{utils.toMoney(cart.shipping())}}</td>
+    </tr>
+    <tr>
+      <td>Tax:</td>
+      <td>{{utils.toMoney(cart.tax())}}</td>
+    </tr>
+  </table>
+
+  <div>
+    <span>Total:</span>
+    <span>{{utils.toMoney(cart.total())}}</span>
+  </div>
+  
+  <button ng-click="proceedToCheckout()">PROCEED TO CHECKOUT</button>
+</div>

@@ -1,0 +1,23 @@
+code {
+  display: block;
+  white-space: pre-wrap   
+}
+
+* {
+  box-sizing: border-box;
+}
+.left {
+  float: left;
+  width: auto;
+}
+.right {
+  float: none;
+  width: 100%;
+}
+
+@media only screen and (max-width:500px) {
+  .left, .right {
+    float: none;
+    width: 100%;
+  }
+}

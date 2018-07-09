@@ -1,0 +1,15 @@
+WISHLIST:
+* Add more complete unit testing
+* Good and proper error handling (e.g. API cannot be reached, etc)
+
+NOTES:
+1. Please ignore usage of copyright images (this being an internal project)
+2. I did not use the minified scripts because the non-minified once give better debug info (e.g. stack trace)
+3. Perhaps this is a carry-over from years of WPF work, but putting every little property into a CSS in a separate file seems like a bad idea. Obviously CSS is wonderful for elements that are reused so that style changes can be made globally, but it seems counterproductive to use it to define properties that will be used once and only once for a specific single element.
+4. Didn't wrap JavaScript in (function() { ... })() to avoid clutter
+5. Wanted to make it bare-bones, but in a real system would use Bootstrap for flexible layout
+6. "A user's cart must show them the total of their items" - A number of interpretations are possible: I chose this to mean the number of physical items in the cart, taking quantity into consideration.
+
+BUGS:
+1. Cart total not updated on quantity update. Consider removing binding and add button. Why did angular update some but not all required fields???
+2. Entering zero or negative for quantity gives NaN as total
