@@ -1,5 +1,5 @@
 <!-- TODO: Make this dynamic if showing featured products -->
-<h1>Query Results</h1>
+<h2>{{isShowingFeaturedProducts ? 'Featured Products' : 'Search Results'}}</h2>
 
 <!-- Iterate over all products in search results -->
 <div ng-repeat="p in products" style="margin: 15px">

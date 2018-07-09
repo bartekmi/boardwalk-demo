@@ -59,5 +59,11 @@ describe("shopping-cart-service", function() {
     // Verify that methods still work
     expect(restored.total()).toEqual(21.0);
   });
+  
+  it("should not break on first-time restore", function() {
+    window.localStorage.clear();
+    cart.restore();
+    // Should not blow up!
+  });
 
 });

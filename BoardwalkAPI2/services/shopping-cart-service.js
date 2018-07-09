@@ -83,13 +83,16 @@ class ShoppingCart {
   
   restore() {
     var itemsAsString = window.localStorage.getItem("ShoppingCart");
+    if (itemsAsString == null)
+      return;
+    
     var rawItems = JSON.parse(itemsAsString);
     
     // This is needed because the data read from local storage will parse to raw
     // objects, not instances of our ShoppingCartItem's
     rawItems.forEach(r => this.items.push(new ShoppingCartItem(r.product, r.quantity)));
   }
-
+  
   toString() {
     var string = "";
     this.items.forEach(i => string += 

@@ -13,3 +13,4 @@ NOTES:
 BUGS:
 1. Cart total not updated on quantity update. Consider removing binding and add button. Why did angular update some but not all required fields???
 2. Entering zero or negative for quantity gives NaN as total
+3. Image aspect ratio is screwed up
