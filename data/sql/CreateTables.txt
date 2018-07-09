@@ -3,5 +3,6 @@
     code text unique not null,
     price double precision not null,
     description text,
-	image text
+	image text,
+	isfeatured boolean not null default false
 );

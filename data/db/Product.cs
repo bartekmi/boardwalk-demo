@@ -17,6 +17,8 @@ namespace boardwalk.db {
         public string description { get; set; }
         public string image { get; set; }           // This is the URL of the image
 
+        public bool isfeatured { get; set; }
+
         public override string ToString() {
             return string.Format("SKU = {0}, Description = {1}, Price = {2}", code, description, price);
         }
