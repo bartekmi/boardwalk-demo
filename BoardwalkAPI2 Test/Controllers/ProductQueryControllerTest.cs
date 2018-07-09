@@ -12,7 +12,7 @@ namespace BoardwalkAPI2.Controllers {
 
         [TestMethod]
         public void ProductQueryController_FeaturedProducts() {
-            IEnumerable<Product> products = _controller.Get("  ");
+            IEnumerable<Product> products = _controller.Get();
             Assert.AreEqual(10, products.Count());
         }
 
