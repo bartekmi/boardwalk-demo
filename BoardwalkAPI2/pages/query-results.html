@@ -10,17 +10,17 @@
   <div class="description">
     <table>
       <tr>
-        <td>Description:</td>
+        <td class="bw-label">Description:</td>
         <td>{{p.description}}</td>
       </tr>
 
       <tr>
-        <td>Price:</td>
-        <td>{{p.price}}</td>
+        <td class="bw-label">Price:</td>
+        <td>{{utils.toMoney(p.price)}}</td>
       </tr>
 
       <tr>
-        <td>SKU:</td>
+        <td class="bw-label">SKU:</td>
         <td>{{p.code}}</td>
       </tr>
     </table>

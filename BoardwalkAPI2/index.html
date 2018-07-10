@@ -19,12 +19,12 @@
     <script>
       var a2zApp = angular.module('a2zApp', ['ngRoute']);
     </script>
-    
+
     <!-- Controllers, Services, etc -->
     <!--<script src="services/query-products-service.js"></script>-->
     <script src="services/shopping-cart-service.js"></script>
     <script src="services/utils-service.js"></script>
-    
+
     <script src="pages/query-results-controller.js"></script>
     <script src="pages/shopping-cart-controller.js"></script>
     <script src="pages/thank-you-controller.js"></script>
@@ -36,32 +36,37 @@
 
   <body ng-controller="MainController">
 
-    <!-- Top Line: Logo, Search, Cart Icon -->
+    <!-- Top Line: Logo, Search Box, Search Icon, Cart Icon -->
     <div class="header">
       <a href="#/home"><img src="images/a2z-logo.png" style="vertical-align: middle"/></a>
+      
       <input type="text" style="vertical-align: middle" ng-model="searchText"/>
-      <button class="btn" ng-click="search()"><i class="fa fa-search" style="font-size:36px;"></i></button>
-      <button class="btn" ng-click="goToShoppingCart()">
-        <i class="fa fa-shopping-cart" style="font-size:36px;"></i>
+
+      <button class="icon-button" ng-click="search()">
+        <i class="fa fa-search"></i>
+      </button>
+
+      <button class="icon-button" ng-click="goToShoppingCart()" style="float: right; margin-left: 30px">
+        <i class="fa fa-shopping-cart"></i>
         <span ng-hide="cart.isEmpty()">{{cart.numberOfItemsInCart()}}</span>
       </button>
     </div>
 
     <!-- Navigation Bar -->
-    <div class="topnav">
-      <a href="#/home">Home</a>
-      <a href="#/about">About</a>
-      <a href="#/contact">Contact Us</a>
+    <div class="nav-bar">
+      <a class="nav-item" href="#/home">Home</a>
+      <a class="nav-item" href="#/about">About</a>
+      <a class="nav-item" href="#/contact">Contact Us</a>
     </div>
 
     <!-- Main content will go here -->
-    <div id="main">
+    <div class="main-body">
       <div ng-view/>
     </div>
 
     <!-- Footer -->
-    <div style="clear: both">
-      <p style="text-align: center">Copyright© 2018  -  A-Z Inc.</p>
+    <div class="footer">
+      <p>Copyright© 2018  -  A-Z Inc.</p>
     </div>
   </body>
 </html>

@@ -1,11 +1,93 @@
+/* ================================================================
+*                 GLOBAL SYLING FOR ELEMENT TYPES
+* ================================================================ */
+
 code {
   display: block;
   white-space: pre-wrap;
+  padding: 15px;
+}
+
+button {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* ================================================================
+*                 ELEMENT CLASS STYLING
+* ================================================================ */
+
+/* -------------------- One-Time Use ----------------------*/
+.header {
+  background: lightblue;
+  /*height: 50px;*/
+}
+
+.nav-bar {
+  background: #5a8fb1;  
+  clear: both;
+}
+
+.nav-item {
+  margin: 20px;
+  color:white;
+  font-size: 18px;
+}
+
+.nav-item:hover {
+  color:black;
+  font-weight: bold;
+}
+
+.main-body {
+  background: #f5f1f1;  
+}
+
+.footer {
+  clear: both;
+  background: lightblue;
+  text-align: center;
+}
+
+/* -------------------- (Potential) Multiple Use ----------------------*/
+
+.icon-button {
+  padding: 0px 10px;
+  margin: 5px;
+  font-size:24px;
+  vertical-align: middle;
 }
 
 .page-heading {
   font-size: 28px;
+  font-weight: bold;
+  background: #b0c8d0;
+  padding-left: 30px;
 }
+
+.secondary-heading {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.bw-label {
+  font-weight: bold;
+  padding-right: 10px;
+  color: #650808;
+}
+
+.dark-border {
+  border: 2px solid black;
+  padding: 10px;
+  background: #ddd5d5;  
+}
+
+/* ================================================================
+*                 MEDIA SIZING / FLEX LAYOUT
+* ================================================================ */
 
 * {
   box-sizing: border-box;
@@ -18,10 +100,12 @@ code {
 .image {
   float: left;
   width: auto;
+  margin-right: 70px;
 }
 .description {
   float: none;
   width: 100%;
+  margin-left: 70px;
 }
 
 .main-content {
@@ -33,17 +117,20 @@ code {
   width: 30%;
 }
 
-
 /* Tablet */
-@media only screen and (max-width:800px) {
-  .main-content, .right-sidebar {
-    width: 100%;
+@media only screen and (max-width:900px) {
+  .main-content {
     float: none;
+    width: 100%;
+  }
+  .right-sidebar {
+    float: none;
+    width: auto;
   }
 }
 
 /* Phone */
-@media only screen and (max-width:500px) {
+@media only screen and (max-width:600px) {
   .image {
     float: none;
     width: 100%;
@@ -52,5 +139,6 @@ code {
     float: none;
     width: 100%;
     height: auto;
+    margin-left: 10px;
   }
 }
