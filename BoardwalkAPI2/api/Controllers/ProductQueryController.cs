@@ -17,9 +17,11 @@ namespace BoardwalkAPI2.Controllers {
         public IEnumerable<Product> Get(string searchText) {
 
             using (BoardwalkContext context = new BoardwalkContext()) {
+
+                string query = string.Format("SELECT * FROM product WHERE lower(description) LIKE '%{0}%' LIMIT {1}", searchText.ToLower(), MAX_ITEMS);
+
                 return context.Products
-                    .Where(x => x.description.Contains(searchText.Trim()))
-                    .Take(MAX_ITEMS)
+                    .SqlQuery(query)
                     .ToList();
             }
         }
