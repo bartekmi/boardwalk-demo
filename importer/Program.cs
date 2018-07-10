@@ -22,8 +22,8 @@ namespace importer {
                     List<Product> products = ReadCsv(csvPath);
                     allProducts.AddRange(products);
 
-                    //foreach (Product product in products)
-                    //    Console.WriteLine(product);
+                    foreach (Product product in products)
+                        Console.WriteLine(product);
                 }
             }
 
@@ -38,12 +38,13 @@ namespace importer {
             string filename = Path.GetFileName(csvPath);
             string[] lines = ReadAllLinesEvenIfLocked(csvPath);
             List<Product> products = new List<Product>();
+            Random random = new Random();
 
             for (int ii = 1; ii < lines.Length; ii++) {        // The first row is headers
                 string line = lines[ii];
-                string[] pieces = line.Split(',');
+                string[] pieces = SplitCsvLine(line);
 
-                string n = Get(pieces, 'M', ii);
+                string m = Get(pieces, 'M', ii);
                 string b = Get(pieces, 'B', ii);
                 string priceAsString = Get(pieces, 'S', ii);
                 if (!double.TryParse(priceAsString, out double price)) {
@@ -54,8 +55,9 @@ namespace importer {
                 Product product = new Product() {
                     code = (_nextId++).ToString(),
                     price = price,
-                    description = string.IsNullOrWhiteSpace(n) ? b : n,     // Column n seems to have more useful info than b, but b is a fall-back
-                    image = Get(pieces, 'X', ii)
+                    description = string.IsNullOrWhiteSpace(m) || m.StartsWith("'") ? b : m,     // Column m seems to have more useful info than b, but b is a fall-back
+                    image = Get(pieces, 'X', ii),
+                    isfeatured = random.Next() % 200 == 0,                  // Average of 1 in 200 products is 'Featured'
                 };
 
                 if (string.IsNullOrWhiteSpace(product.description)) {
@@ -107,12 +109,48 @@ namespace importer {
 
             return data[index];
         }
+
+        private static string[] SplitCsvLine(string line)
+        {
+            bool isInQuote = false;
+            StringBuilder builder = new StringBuilder();
+            List<string> fields = new List<string>();
+
+            foreach (char c in line)
+            {
+                if (isInQuote)
+                {
+                    if (c == '"')
+                        isInQuote = false;
+                    else
+                        builder.Append(c);
+                }
+                else
+                {
+                    if (c == '"')
+                        isInQuote = true;
+                    else if (c == ',')
+                    {
+                        fields.Add(builder.ToString());
+                        builder.Clear();
+                    }
+                    else
+                        builder.Append(c);
+                }
+            }
+
+            if (builder.Length > 0)
+                fields.Add(builder.ToString());
+
+            return fields.ToArray();
+        }
         #endregion
 
         #region Store to Database
 
         private static void StroreInDatabase(List<Product> allProducts) {
             using (BoardwalkContext context = new BoardwalkContext()) {
+                context.Database.ExecuteSqlCommand("DELETE FROM product");
                 context.Products.AddRange(allProducts);
                 context.SaveChanges();
             }
@@ -122,8 +160,8 @@ namespace importer {
         #region Utilities
 
         private static void Warn(string filename, int ii, string warning) {
-            //int csvRow = ii + 1;
-            //Console.WriteLine("WARNING at {0}:{1} - {2}", filename, csvRow, warning);
+            int csvRow = ii + 1;
+            Console.WriteLine("WARNING at {0}:{1} - {2}", filename, csvRow, warning);
         }
         #endregion
     }
